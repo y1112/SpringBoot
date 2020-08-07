@@ -1,5 +1,6 @@
 package com.org.admin.domain.posts;
 
+import com.org.admin.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter// 롬복의 어노테이션, 클래스 내 모든 필드의 Getter 메소드를 자동 생성
 @NoArgsConstructor// 롬복의 어노테이션, 기본 생성자 자동 추가
 @Entity// JPA의 어노테이션, 테이블과 링크될 클래스임을 나타냄
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id// 해당 테이블의 PK필드를 나타냄
     @GeneratedValue(strategy= GenerationType.IDENTITY)// PK의 생성 규칙을 나타냄, 스프링 부트 2.0에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 됨
     private Long id;
