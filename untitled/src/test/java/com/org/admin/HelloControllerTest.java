@@ -16,21 +16,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(controllers = HelloController.class)
+@RunWith(SpringRunner.class)// 테스트를 진행할 때 JUnit에 내장된 실행자 외에 다른 실행자를 실행시킴, SpringRunner라는 스프링 실행자 사용, 스프링 부트 테스트와 JUnit 사이의 연결자 역할
+@WebMvcTest(controllers = HelloController.class)// @Controller, @ControllerAdvice 등 사용 가능
 public class HelloControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+    @Autowired// 스프링이 관리하는 Bean 주입받음
+    private MockMvc mvc;// 웹 API 테스트할 때 사용, 스프링 MVC테스트의 시작점, 이 클래스를 통해 HTTP GET, POST 등에 대한 API 테스트를 할 수 있음
 
     @WithMockUser(roles = "USER")
     @Test
     public void hello가_리턴된다() throws Exception {
         String hello = "hello";
 
-        mvc.perform(get("/hello"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(hello));
+        mvc.perform(get("/hello"))// MockMvc를 통해 /hello 주소로 HTTP GET 요청을 함, 체이닝이 지원되어 여러 검증 기능을 이어서 선언 가능
+                .andExpect(status().isOk())// mvc.perform()결과를 검증, HTTP Header의 Status를 검증
+                .andExpect(content().string(hello));// 응답 본문의 내용을 검증
     }
     @WithMockUser(roles="USER")
     @Test

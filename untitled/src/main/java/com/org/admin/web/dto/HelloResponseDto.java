@@ -9,24 +9,17 @@ public class HelloResponseDto {
     private final String name;
     private final int amount;
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 
-    public HelloResponseDto(String name, int amount) {
-        this.name = name;
-        this.amount = amount;
-    }
+//    public HelloResponseDto(String name, int amount) {
+//        this.name = name;
+//        this.amount = amount;
+//    }
 
-    @Override
-    public String toString() {
-        return "HelloResponseDto{" +
-                "name='" + name + '\'' +
-                ", amount=" + amount +
-                '}';
-    }
 
-    public int getAmount() {
-        return amount;
-    }
+//    public int getAmount() {
+//        return amount;
+//    }
 }
